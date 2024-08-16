@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Turing Machine Simulator</title>
+	<link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+	<div>
+		<label for = "ruleEntry">Insert Rule Pattern:</label>
+		<input type = "text" id = "ruleEntry" size = "40"/>
+		<button id = "startNew">Start New Turing Machine</button>
+		<label for = "performanceMode">Performance Mode:</label>
+		<input type = "checkbox" id = "performanceMode"/>
+		<p id = "errorText"></p>
+	</div>
+	<div>
+		<button id = "backButton">Back</button>
+		<button id = "forwardButton">Forward</button>
+		<button id = "autoUntil">Auto Until:</button>
+		<input type = "text" id = "autoUntilInput" name = "autoUntilInput" size = "20"/>
+		<button id = "autoX">Auto X Turns:</button>
+		<input type = "text" id = "autoXInput" name = "autoXInput" size = "20"/><br><br>
+	</div>
+	<div class = "sidebar">
+		<h5 style = "text-align:center">All currently known busy beavers</h5>
+		<ol>
+			<li class = "rule">---1LA</li>
+			<li class = "rule">1RB1LB_1LA---</li>
+			<li class = "rule">1RB---_0RC1RB_1LC1LA</li>
+			<li class = "rule">1RB1LB_1LA0LC_---1LD_1RD0RA</li>
+			<li class = "rule">1RB1LC_1RC1RB_1RD0LE_1LA1LD_---0LA</li>
+		</ol>
+		<br><br><br><br><br><br>
+		<p>Notes:</p>
+		<ul>
+			<li class = "rule">Use keyword 'halt' in Auto Until to run until the program halts</li>
+			<li class = "rule">Auto runs at about 3 million rules per second, expect large delays when running a large number of turns at once</li>
+			<li class = "rule">The back button goes back exactly 1 million steps to unsure that memory limit is not exceeded</li>
+			<li class = "rule">To save memory enable performance mode, this will disable updating the display and must be enabled before starting the machine</li>
+		</ul>
+	</div>
+	<div id = "scrollMenu" class = "center">
+		
+	</div>
+	<p id = "turnCounter" style="text-align:center"></p>
+	<p>Example pattern: 1RB1LC_1RC1RB_1RD0LE_1LA1LD_---0LA</p>
+	<p id = "showPattern"></p>
+	
+	<script src = "javascript.js"></script>
+</body>
+</html>
