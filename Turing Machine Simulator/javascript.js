@@ -224,7 +224,7 @@ function Machine(){
 		if (rule.next == null){ //if we hit the halt instruction
 			halt = true;
 			turnCounter.innerHTML = "Halted, Total Turns: " + this.turnCount;
-			return false;
+			return;
 		}
 		
 		this.currentNode.val = rule.val; //change current nodes value
@@ -242,13 +242,13 @@ function Machine(){
 		if (updateScrollMenu)
 			scrollMenu.scrollLeft = document.getElementById("square" + (this.currentNode.index - 6)).offsetLeft - scrollMenu.offsetLeft - 20;
 		
-		return true;
+		return;
 	};
 	
 	this.autoRule = function(target){
 		let didithalt = false;
 		
-		while (this.turnCount < target){
+		while (this.turnCount < target){ //keep applying rules until the required turn count is reached, or if we hit the halt command 
 			this.turnCount++;
 			this.turns.append(new Turn(this.currentNode.val, this.currentNode.index, this.currentRule));
 			
@@ -287,7 +287,7 @@ function Machine(){
 			this.currentRule = rule.next;
 		}
 		
-		if (updateScrollMenu){
+		if (updateScrollMenu){ //if we want to update the display, then we first remove the current display and redisplay it
 			while (scrollMenu.firstChild)
 				scrollMenu.firstChild.remove();
 			
@@ -472,7 +472,7 @@ function Queue(){ //custom queue implementation because i dont think javascript 
 		
 		this.size++;
 		
-		if (this.size > 1000000){//a limit is set as to how many moves you can move back as to ensure that the memory limit is not hit
+		if (this.size > 100000){//a limit is set as to how many moves you can move back as to ensure that the memory limit is not hit
 			this.dequeue();
 		}
 	}
